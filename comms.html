@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="data:image/x-icon;" type="image/x-icon" rel="shortcut icon">
+    <intercept-url pattern="/favicon.ico" access="ROLE_ANONYMOUS">
+    </intercept-url>
+    <link href="public/bootstrap/css/style-october11.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="header">
+          <div class="navbar navbar-default">
+            <div class="container">
+              <div class="navbar-header">
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar">
+                </span>
+                <span class="icon-bar">
+                </span>
+                <span class="icon-bar">
+                </span>
+                </button>
+                <a class="brand" href="/" data-toggle="collapse" data-target=".navbar-collapse.in">
+                  <img width="225" src="public/images/logo-2016-2.png">
+                </a>
+              </div>
+              <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                  <li> <a class="navbar-link" href="/membersonly" data-toggle="collapse" data-target=".navbar-collapse.in">Members Only!</a>
+                </li>
+                <li> <a class="navbar-link" href="/resources" data-toggle="collapse" data-target=".navbar-collapse.in">Resouces</a>
+              </li>
+              <li>
+                <a href="/userprofile">Hello, nnn123</a>
+              </li>
+              <li> <a class="signup-link" href="/comments" data-toggle="collapse" data-target=".navbar-collapse.in">Comments</a>
+            </li>
+            <li> <a class="login-link" href="/logout" data-toggle="collapse" data-target=".navbar-collapse.in">Log Out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+<div class="view">
+<form action="/comments/maincomment" id="addMainCommentForm" method="POST" enctype="application/x-www-form-urlencoded">
+  <div class="modal fade" id="addMainCommentFormModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add your Comment</h4>
+        </div>
+        <div class="modal-body">
+          <p>D8Ch7GHu-qP_S3mWoy4AjOohwXbD4KpAdAzM</p>
+          <div class="form-group">
+            <div>
+              <input type="hidden" name="_csrf" value="D8Ch7GHu-qP_S3mWoy4AjOohwXbD4KpAdAzM">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="candidate">Which candidate do you support?</label>
+            <div class="radio">
+              <label>
+                <input type="radio", class="radio", name="candidate", id="candidate1", value="Donald Trump">I support Donald Trump</label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio", class="radio", name="candidate", id="candidate2", value="Hillary Clinton">I support Hillary Clinton</label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio", class="radio", name="candidate", id="candidate3", value="neither candidate">I support neither candidate</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="comment">Comment about the candidate</label>
+                  <div>
+                    <textarea class="form-control input-lg" id="comment" name="comment" placeholder="your comments" rows="10">
+                    </textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-default btn-lg" data-dismiss="modal">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary btn-lg" type="submit">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form id="addSubCommentForm" action="" method="POST" enctype="application/x-www-form-urlencoded">
+        <div class="modal fade" id="addSubCommentFormModal" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Reply to this comment</h4>
+              </div>
+              <div class="modal-body">
+                <p>D8Ch7GHu-qP_S3mWoy4AjOohwXbD4KpAdAzM</p>
+                <div class="form-group">
+                  <div>
+                    <input type="hidden" name="_csrf" value="D8Ch7GHu-qP_S3mWoy4AjOohwXbD4KpAdAzM">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="comment">Reply</label>
+                  <div>
+                    <textarea class="form-control input-lg" id="comment" name="comment" placeholder="your reply" rows="10">
+                    </textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-default btn-lg" data-dismiss="modal">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary btn-lg" type="submit">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="login">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <button class="btn btn-default btn-lg" type="button">
+              <span class="glyphicon glyphicon-menu-left"> </span>Back</button>&nbsp;&nbsp;<button class="btn btn-default btn-lg" type="button">
+              <span class="glyphicon glyphicon-menu-right">
+              </span>Next</button>
+              <div style="height:25px">
+              </div>
+              <a class="btn btn-primary btn-lg" href="">Sort Comments</a>&nbsp;&nbsp;<button class="btn btn-primary btn-lg" type="button" onclick="doCommentModal()">Add a Comment</button>
+              <div style="height:25px">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-8">
+              <div class="row list-group">
+
+
+                <div class="col-xs-12 list-group-item">
+                  <h4>aaa123<small>, Cccccc, Mississippi<br>
+                    <small>October 26, 2016</small>
+                    </small>
+                  </h4>
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <i>Which candidate do I support? ...</i>
+                    </div>
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-xs-12">
+                          <p class="controlOverflow">commenterId: 580771261928bc6e024bb08c</p>
+                          <p class="controlOverflow">candidate: neither candidate</p>
+                          <p class="controlOverflow">comment: Neither !!!!!!!!. Nkjcsnkcjscjccwpkdcd, Jchjbcjhscbjhsdcjbdhc. Fgsavgavsaghxhasvxhgasx. Yhjbsxashxashxasxasjbhxas.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="pull-right">
+                    <button class="subCommentReply btn btn-primary btn-lg" type="button" data-id="5810df30ad36e171023d015d">Reply</button>
+                    &nbsp;&nbsp;
+                    <a class="btn btn-primary btn-lg" href="/#{id}">View all comments&nbsp;<span class="badge">11</span></a>
+                  </div>
+                  <div style="height:40px"></div>
+                </div>
+
+
+
+
+
+              <div class="col-xs-12 list-group-item">
+                <h4>aaa123<small>, Cccccc, Mississippi<br>
+                <small>October 26, 2016</small>
+                </small>
+                </h4>
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <i>Which candidate do I support? ...</i>
+                  </div>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <p class="controlOverflow">commenterId: 580771261928bc6e024bb08c</p>
+                        <p class="controlOverflow">candidate: Donald Trump</p>
+                        <p class="controlOverflow">comment: Tgdvsdjhsdjsdjhjvshdsvs. Hjsckcjhsdcsdkcdsjhkcdjksc. Jjcnjkscdksjckdjsckjd. Nkjdsckjsncksdcsdcjs.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="pull-right">
+                  <button class="subCommentReply btn btn-primary btn-lg" type="button" data-id="5810df12ad36e171023d015c">Reply</button>&nbsp;&nbsp;<a class="btn btn-primary btn-lg" href="/#{id}">View all comments&nbsp;<span class="badge">11</span>
+                </a>
+              </div>
+              <div style="height:40px">
+              </div>
+            </div>
+            <div class="col-xs-12 list-group-item">
+              <h4>aaa123<small>, Cccccc, Mississippi<br>
+              <small>October 26, 2016</small>
+              </small>
+              </h4>
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <i>Which candidate do I support? ...</i>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <p class="controlOverflow">commenterId: 580771261928bc6e024bb08c</p>
+                      <p class="controlOverflow">candidate: Hillary Clinton</p>
+                      <p class="controlOverflow">comment: AGUsabchsbchjdscd. JNxjkdsckkjsjksdc. JNxkjsanckjscnjkscnjkdscs.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="pull-right">
+                <button class="subCommentReply btn btn-primary btn-lg" type="button" data-id="5810cc0c9d4a0fdf03af3d6d">Reply</button>&nbsp;&nbsp;<a class="btn btn-primary btn-lg" href="/#{id}">View all comments&nbsp;<span class="badge">11</span>
+              </a>
+            </div>
+            <div style="height:40px">
+            </div>
+          </div>
+          <div class="col-xs-12 list-group-item">
+            <h4>aaa123<small>, Cccccc, Mississippi<br>
+            <small>October 26, 2016</small>
+            </small>
+            </h4>
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <i>Which candidate do I support? ...</i>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <p class="controlOverflow">commenterId: 580771261928bc6e024bb08c</p>
+                    <p class="controlOverflow">candidate: Hillary Clinton</p>
+                    <p class="controlOverflow">comment: Sfgasscbdsjchdhscds. JKBShsabchsbdckjds, JSjdscjkjknsdkjcdjknscds.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pull-right">
+              <button class="subCommentReply btn btn-primary btn-lg" type="button" data-id="5810cb71398683ce03ac3b64">Reply</button>&nbsp;&nbsp;<a class="btn btn-primary btn-lg" href="/#{id}">View all comments&nbsp;<span class="badge">11</span>
+            </a>
+          </div>
+          <div style="height:40px">
+          </div>
+        </div>
+        <div class="col-xs-12 list-group-item">
+          <h4>aaa123<small>, Cccccc, Mississippi<br>
+          <small>October 26, 2016</small>
+          </small>
+          </h4>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <i>Which candidate do I support? ...</i>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-12">
+                  <p class="controlOverflow">commenterId: 580771261928bc6e024bb08c</p>
+                  <p class="controlOverflow">candidate: Hillary Clinton</p>
+                  <p class="controlOverflow">comment: Vgvxjhshcsdcvhdsc. Jchdsoicdsoicsdocdosuc. Jocdnscjnjsjkckjdscds.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pull-right">
+            <button class="subCommentReply btn btn-primary btn-lg" type="button" data-id="5810c8b09b740aab033f70bb">Reply</button>&nbsp;&nbsp;<a class="btn btn-primary btn-lg" href="/#{id}">View all comments&nbsp;<span class="badge">11</span>
+          </a>
+        </div>
+        <div style="height:40px">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-4">
+    <div class="row">
+      <p class="lead">The 2016 presidential election is upon us! Who do you support and what are your comments regarding this hotly contested event?</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class="footer">
+<br>
+<div class="container">
+<div class="row">
+  <div class="col-md-2 col-sm-12 col-xs-12">
+    <div class="row">
+      <div class="col-md-12 col-sm-6 col-xs-6">
+        <a href="" target="_blank">
+          <img class="apple" src="public/images/ios.svg" width="125" height="54" alt="Get it for iOS">
+        </a>
+      </div>
+      <div class="col-md-12 col-sm-6 col-xs-6">
+        <a href="" target="_blank">
+          <img class="android" src="public/images/android.svg" width="125" height="54" alt="Get it for Android">
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-12 col-xs-12">
+    <div class="row">
+      <div class="col-md-5 col-md-offset-1 col-sm-6 col-xs-6">
+        <span class="title-footer">Company</span>
+        <hr class="under">
+        <a href="">About</a>
+        <br>
+        <a href="">Locations</a>
+        <br>
+        <a href="">Pricing</a>
+        <br>
+        <a href="">FAQ</a>
+        <br>
+        <a href="">Contact</a>
+        <br class="mobile-only">
+        <br class="mobile-only">
+      </div>
+      <div class="col-md-5 col-md-offset-1 col-sm-6 col-xs-6">
+        <span class="title-footer">Connect</span>
+        <hr class="under">
+        <a href="">Facebook</a>
+        <br>
+        <a href="">Twitter</a>
+        <br>
+        <a href="">Yelp</a>
+        <br>
+        <a href="">Events</a>
+        <br>
+        <a href="">Blog</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-12 col-xs-12">
+    <span class="title-footer">Subscribe</span>
+    <hr class="under">
+    <p>Stay informed with the latest products, updates and notices from ThisGreatApp!</p>
+    <form class="form-inline form-footer" name="form">
+      <div class="input-group">
+        <input class="form-control" type="email" placeholder="Enter email" required="">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit" disabled="disabled">Submit</button>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+<br>
+<hr>
+<br>
+<div class="container">
+<div class="last-left">
+  <div class="address-info">
+    <span>99 Irving Plaza, 95th floor, New York, NY 10003</span>
+  </div>
+  <span class="phone-info">(212) 555-5555</span>
+</div>
+</div>
+<div class="container">
+<div class="last-left bottom-row">
+  <a class="legal-link" href="">© 2016 ThisGreatApp!, Inc.</a>
+  <a class="legal-link" href="">Privacy</a>
+  <a class="legal-link" href="">Terms</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script src="public/javascripts/jQuery.min.v2.2.4.js"></script>
+<script src="public/javascripts/jquery.validate.min.js"></script>
+<script src="public/bootstrap/js/bootstrap.min.js"></script>
+<script src="public/bootstrap/js/bootstrap-select.js"></script>
+<script src="public/javascripts/formValidation.js"></script>
+<script src="public/javascripts/commentsView.js"></script>
+</body>
+</html>
+
+
+
+

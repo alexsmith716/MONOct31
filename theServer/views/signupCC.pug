@@ -1,0 +1,64 @@
+extends layout
+
+block bodyScripts
+  <!--script(src='/javascripts/onbeforeunload.js')-->
+
+block content
+  .row.page-header
+    .col-sm-12.col-md-8
+      h2= pageHeader.header 
+      <!-- p #{csrfToken} -->
+      
+  .row
+    .col-xs-12.col-sm-8
+
+      form(role="form", id="signUpFormID", action="/signup", method="post")
+
+        - if (error != undefined)
+          .alert.alert-danger(role="alert") #{error}
+
+        .form-group
+          div
+            input(type="hidden" name="_csrf" value=`${csrfToken}`)
+
+        .form-group
+          label.control-label.sr-only(for="displayname") Username
+          div
+            input.form-control.input-lg(id="displayname", name="displayname", placeholder="username", maxlength="20", type="text", required, autofocus)
+            .text-muted
+              | &nbsp;&nbsp;&nbsp;
+              i *username cannot be changed
+
+        .form-group
+          label.control-label.sr-only(for="email") Email Address
+          div
+            input.form-control.input-lg(id="email", name="email", placeholder="Email address", maxlength="40", type="email", required)
+
+        .form-group
+          label.control-label.sr-only(for="password") Password
+          div
+            input.form-control.input-lg(id="password", name="password", placeholder="Password", maxlength="30", type="password", required)
+
+        .form-group
+          label.control-label.sr-only(for="firstName") First Name
+          div
+            input.form-control.input-lg(id="firstName", name="firstname", placeholder="First Name", maxlength="20", type="text", required)
+
+        .form-group
+          label.control-label.sr-only(for="lastName") Last Name
+          div
+            input.form-control.input-lg(id="lastName", name="lastname", placeholder="Last Name", maxlength="20", type="text", required)
+
+        .form-group
+          label.control-label.sr-only(for="city") City
+          div
+            input.form-control.input-lg(id="city", name="city", placeholder="City", maxlength="20", type="text", required)
+
+        .form-group
+          label.control-label.sr-only(for="State") State
+          div
+            +selectStateFormControl()
+        .col-xs-12(style="height:15px;")
+
+        div
+          button(type="submit", class="btn btn-primary btn-lg") Sign Up

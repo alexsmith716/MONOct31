@@ -1,0 +1,55 @@
+<div class="modal ng-scope top am-fade" tabindex="-1" role="dialog" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="ask-leave ng-scope" ng-controller="AskLeaveCtrl">
+        <form ng-submit="subscribe()" name="form" class="ng-pristine ng-valid-email ng-invalid ng-invalid-required">
+
+          <!-- Close button -->
+          <div class="pull-right">
+            <button type="button" class="close" ng-click="$hide()">×</button>
+          </div>
+          <div class="clearfix"></div>
+
+          <!-- Content -->
+          <div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="text-center">
+                  <img src="images/croissantman.png" height="100px">
+                  <h1>A mini surprise</h1>
+                  <p class="text-center">Send yourself 15% off your first month!</p>
+                  <br>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-10 col-md-offset-1">
+                <div class="form-group" ng-class="{ 'has-success' : form.email.$valid &amp;&amp; form.email.$dirty, 'has-error' : form.email.$invalid &amp;&amp; form.email.$dirty }">
+                  <input type="email" name="email" ng-model="email" class="form-control input-lg ng-pristine ng-valid-email ng-invalid ng-invalid-required ng-touched" placeholder="Enter your email" required="">
+
+                  <!-- ngIf: form.email.$dirty -->
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg btn-block btn-leaving" ng-disabled="form.$invalid || submitted" disabled="disabled">
+                  Gimme!<img src="/images/loading.gif" width="20" ng-show="submitted" class="ng-hide">
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+          <!-- Submit & close buttons -->
+          <div>
+            <div class="text-center">
+              <a href="" ng-click="$hide()" style="text-decoration: underline !important;">No thanks, Croissant man.</a>
+            </div>
+            <br>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

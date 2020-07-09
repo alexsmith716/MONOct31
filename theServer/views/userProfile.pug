@@ -1,0 +1,242 @@
+extends layout
+
+block headScripts
+
+block bodyScripts
+  script(src='/javascripts/userProfile.js')
+
+block content
+
+  form(role="form", id="userProfileForm", method="POST", action="/userprofile", enctype="application/x-www-form-urlencoded")
+  
+    .modal.fade(id='userProfileFormModal' tabindex='-1')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h4.modal-title Edit your profile
+          .modal-body
+
+            p= `${csrfToken}`
+
+            - if (error != undefined)
+              .alert.alert-danger(role="alert") #{error}
+
+            .form-group
+              div
+                input(type="hidden" name="_method" value="PUT")
+
+            .form-group
+              div
+                input(type="hidden" name="_csrf" value=`${csrfToken}`)
+
+            .form-group
+              label.control-label 
+              div(class="flex-containerMainCentered")
+                div(class="flex-containerSubProfile")
+                  div(class="dont-break-out" style="font-size: 1.0em;")
+
+
+            .form-group
+              label.control-label
+              div(style="visibility: hidden")
+                input.form-control.input-md(id="inputElement", required, autofocus)
+              div(style="visibility: hidden")
+                +selectStateFormControl()  
+            
+            .form-group
+              button(class="btn btn-default btn-md" data-dismiss="modal") Cancel
+              | &nbsp;&nbsp;&nbsp;&nbsp;
+              button(class="btn btn-primary btn-md" type="submit") Submit
+
+
+  .login
+    br
+    br
+
+    .container
+      .row
+      
+        .col-xs-12.col-sm-3.col-md-3.col-md-3
+          .text-center
+            img(src="/images/someUser.png")
+      
+      
+        .col-xs-12.col-sm-7.col-md-7.col-md-7
+      
+          .row
+            div(style="height:25px")
+      
+          .row
+      
+            - var isodate = `${currentUser.previouslogin}`
+            - var millis = Date.parse(isodate)
+            .col-xs-12
+              .pull-right.text-muted.alertEditUser
+                small
+                  i Last login:
+                    | &nbsp;
+                    +newAppDate(millis,true)
+      
+          .row
+            div(style="height:25px")
+      
+          
+          .row
+      
+            .col-xs-12
+              ul.nav.nav-tabs
+                li.active
+                  a(onClick="toggleEditBtn(false,'personalInfo',true); return false;" href="#home" data-toggle="tab")
+                    h4 Profile
+                li
+                  a(onClick="toggleEditBtn(false,'accountInfo',true); return false;" href="#profile" data-toggle="tab")
+                    h4 Account
+      
+              .tab-content
+      
+                div(class="tab-pane active" id="home")
+      
+                  div(style="height:16px")
+      
+      
+                  div
+                    div
+                      h4
+                        i First Name:
+      
+                    div(class="flex-containerMainCentered")
+      
+                      div(class="flex-containerSubProfile")
+      
+                        div(class="dont-break-out" style="font-size: 1.0em;") #{currentUser.firstname}
+      
+                      div(class="personalInfo" style="display:none;") 
+                        <button class="btn btn-primary btn-md" onclick="doUserProfileEditModal('userProfileForm','First Name','firstname','text','#{currentUser.firstname}')">Edit</button>
+      
+                    div(style="height:12px")
+      
+      
+                  div
+                    div
+                      h4
+                        i Last Name:
+      
+                    div(class="flex-containerMainCentered")
+      
+                      div(class="flex-containerSubProfile")
+      
+                        div(class="dont-break-out" style="font-size: 1.0em;") #{currentUser.lastname}
+      
+                      div(class="personalInfo" style="display:none;") 
+                        <button class="btn btn-primary btn-md" onclick="doUserProfileEditModal('userProfileForm','Last Name','lastname','text','#{currentUser.lastname}')">Edit</button>
+      
+                    div(style="height:12px")
+      
+      
+                  div
+                    div
+                      h4
+                        i City:
+      
+                    div(class="flex-containerMainCentered")
+      
+                      div(class="flex-containerSubProfile")
+      
+                        div(class="dont-break-out" style="font-size: 1.0em;") #{currentUser.city}
+      
+                      div(class="personalInfo" style="display:none;") 
+                        <button class="btn btn-primary btn-md" onclick="doUserProfileEditModal('userProfileForm','City','city','text','#{currentUser.city}')">Edit</button>
+      
+                    div(style="height:12px")
+      
+      
+                  div
+                    div
+                      h4
+                        i State:
+      
+                    div(class="flex-containerMainCentered")
+      
+                      div(class="flex-containerSubProfile")
+      
+                        div(class="" style="font-size: 1.0em;") #{currentUser.state.full}
+      
+                      div(class="personalInfo" style="display:none;") 
+                        <button class="btn btn-primary btn-md" onclick="doUserProfileEditModal('userProfileForm','State','state','select','#{currentUser.state.full}')">Edit</button>
+      
+      
+                  div(style="height:28px")
+      
+                  div
+                    button(id="updatePersonalBtn" class="btn btn-success btn-md nav-toggle" onClick="toggleEditBtn(false,'personalInfo',false);") Update Personal info
+      
+      
+                div(class="tab-pane" id="profile")
+      
+                  div(style="height:16px")
+      
+      
+                  div
+                    div
+                      h4
+                        i Username:
+      
+                    div(class="flex-containerMainCentered")
+      
+                      div(class="flex-containerSubProfile")
+      
+                        div(class="flex-item111 text-muted controlOverflow" style="font-size: 1.0em;") #{currentUser.displayname}
+                    small.text-muted
+                      | &nbsp;&nbsp;&nbsp;
+                      i *Username cannot be changed
+      
+      
+      
+                  div(style="height:12px")
+
+
+      
+                  div
+                    div
+                      h4
+                        i Email:
+      
+                    div(class="flex-containerMainCentered")
+      
+                      div(class="flex-containerSubProfile")
+      
+                        div(class="dont-break-out" style="font-size: 1.0em;") #{currentUser.email}
+      
+                      div(class="accountInfo" style="display:none;")
+                        <button class="btn btn-primary btn-md" onclick="doUserProfileEditModal('userProfileForm','Email','email','email','#{currentUser.email}')">Edit</button>
+      
+                  div(style="height:12px")
+      
+      
+
+                  div
+                    div
+                      h4
+                        i Password:
+      
+                    div(class="flex-containerMainCentered")
+      
+                      div(class="flex-containerSubProfile")
+      
+                        div(class="dont-break-out" style="font-size: 1.0em;") ********
+      
+                      div(class="accountInfo" style="display:none;") 
+                        <button class="btn btn-primary btn-md" onclick="doUserProfileEditModal('userProfileForm','Password','password','password','********')">Edit</button>
+                    small.text-muted
+                      | &nbsp;&nbsp;&nbsp;
+                      i *Password is hidden 
+      
+      
+                  div(style="height:28px")
+      
+                  div
+                    button(id="updateAccountBtn" class="btn btn-success btn-md nav-toggle" onClick="toggleEditBtn(false,'accountInfo',false);") Update Account info
+
+    br
+    br
+

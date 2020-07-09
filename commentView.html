@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>ThisGreatApp!</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="data:image/x-icon;" type="image/x-icon" rel="shortcut icon">
+		<intercept-url pattern="/favicon.ico" access="ROLE_ANONYMOUS">
+		</intercept-url>
+		<link href="public/bootstrap/css/style-october11.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				<div class="header">
+					<div class="navbar navbar-default">
+						<div class="container">
+							<div class="navbar-header">
+								<button class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<a class="brand" href="/" data-toggle="collapse" data-target=".navbar-collapse.in">
+									<img width="225" src="public/images/logo-2016-2.png">
+								</a>
+							</div>
+							<div class="collapse navbar-collapse">
+								<ul class="nav navbar-nav navbar-right">
+									<li>
+										<a href="/userprofile/58076bd3bb2924500200175c">Hello, homerNYC123</a>
+									</li>
+									<li> 
+										<a class="signup-linkX">Comments</a>
+									</li>
+									<li> 
+										<a class="login-linkX">Log Out</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+	<div class="view">
+		<form role="form" id="addMainCommentForm" method="post">
+			<div class="modal fade" id="addMainCommentFormModal" tabindex="-1">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Add your Comment</h4>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<div>
+									<input type="hidden" name="_csrf" value="haVQSLQV-R2A340eVndcFkTpcsysqJqHEXDQ">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label" for="candidate">Which candidate do you support?</label>
+								<div class="radio">
+									<label>
+										<input type="radio", class="radio", name="candidate", id="candidate1", value="Donald Trump">I support Donald Trump</label>
+									</div>
+									<div class="radio">
+										<label>
+											<input type="radio", class="radio", name="candidate", id="candidate2", value="Hillary Clinton">I support Hillary Clinton</label>
+										</div>
+										<div class="radio">
+											<label>
+												<input type="radio", class="radio", name="candidate", id="candidate3", value="neither candidate">I support neither candidate</label>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label" for="comment">Comment about the candidate</label>
+											<div>
+												<textarea class="form-control input-lg" id="comment" name="comment" placeholder="your comments" rows="10">
+												</textarea>
+											</div>
+										</div>
+										<div class="form-group">
+											<button class="btn btn-default btn-lg" data-dismiss="modal">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary btn-lg" type="submit">Submit</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+					<div class="login">
+						<br>
+						<br>
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="error">
+									</div>
+									<div>
+										<button class="btn btn-default btn-lg" type="button">
+										<span class="glyphicon glyphicon-menu-left"> </span>Back</button>&nbsp;&nbsp;<button class="btn btn-default btn-lg" type="button">
+										<span class="glyphicon glyphicon-menu-right">
+										</span>Next</button>
+									</div>
+									<div style="height:20px">
+									</div>
+									<div>
+										<a class="btn btn-primary btn-lg" href="">Sort Comments</a>&nbsp;&nbsp;<button class="btn btn-primary btn-lg" type="button" onclick="doIndexViewAddCommentModal()">Add a Comment</button>
+									</div>
+									<div style="height:20px">
+									</div>
+									<div class="row list-group">
+
+
+
+									<div class="col-xs-12 list-group-item">
+										<h4>bigBenNYC123<small>, Philadelphia, Pennsylvania<br>
+										<small>October 19, 2016</small>
+										</small>
+										</h4>
+										<div class="panel panel-primary">
+											<div class="panel-heading">
+												<i>Which candidate do I support? ...</i>
+											</div>
+											<div class="panel-body">
+												<div class="row">
+													<div class="col-xs-12">
+														<p class="controlOverflow">bigBenNYC123</p>
+														<p class="controlOverflow">2016-10-19T13:45:06.770Z</p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+                                        <div class="flex-containerMainCentered flex-containerMainCentered2">
+                                        	<div>
+                                        		<a class="btn" href="/reply">Reply</a>
+                                        	</div>
+                                        	<div>
+                                        		<span class="spacerDot"></span>
+                                        	</div>
+                                        	<div class="btn btnText">71</div>
+                                        	<div class="recommendedGlyph btn btnText">
+                                        		<span class="glyphicon glyphicon-thumbs-up"></span>
+                                        	</div>
+                                        	<div>
+                                        		<a class="btn" href="/recommend">Recommend</a>
+                                        	</div>
+                                        </div>
+
+										<div style="height:25px"></div>
+									</div>
+
+
+
+
+									<div class="col-xs-12 list-group-item">
+										<h4>aaa123<small>, Cccccc, Colorado<br>
+										<small>October 19, 2016</small>
+										</small>
+										</h4>
+										<div class="panel panel-primary">
+											<div class="panel-heading">
+												<i>Which candidate do I support? ...</i>
+											</div>
+											<div class="panel-body">
+												<div class="row">
+													<div class="col-xs-12">
+														<p class="controlOverflow">aaa123</p>
+														<p class="controlOverflow">2016-10-19T13:12:06.746Z</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<a class="btn btn-primary btn-lg" href="/#{id}">View all comments&nbsp;<span class="badge">11</span>
+									</a>
+									<div style="height:25px">
+									</div>
+								</div>
+								<div class="col-xs-12 list-group-item">
+									<h4>homerNYC123<small>, St. Louis, District Of Columbia<br>
+									<small>October 19, 2016</small>
+									</small>
+									</h4>
+									<div class="panel panel-primary">
+										<div class="panel-heading">
+											<i>Which candidate do I support? ...</i>
+										</div>
+										<div class="panel-body">
+											<div class="row">
+												<div class="col-xs-12">
+													<p class="controlOverflow">homerNYC123</p>
+													<p class="controlOverflow">2016-10-19T12:49:23.490Z</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<a class="btn btn-primary btn-lg" href="/#{id}">View all comments&nbsp;<span class="badge">11</span>
+								</a>
+								<div style="height:25px">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="footer">
+			<br>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 col-sm-12 col-xs-12">
+						<div class="row">
+							<div class="col-md-12 col-sm-6 col-xs-6">
+								<a href="" target="_blank">
+									<img class="apple" src="public/images/ios.svg" width="125" height="54" alt="Get it for iOS">
+								</a>
+							</div>
+							<div class="col-md-12 col-sm-6 col-xs-6">
+								<a href="" target="_blank">
+									<img class="android" src="public/images/android.svg" width="125" height="54" alt="Get it for Android">
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-12 col-xs-12">
+						<div class="row">
+							<div class="col-md-5 col-md-offset-1 col-sm-6 col-xs-6">
+								<span class="title-footer">Company</span>
+								<hr class="under">
+								<a href="">About</a>
+								<br>
+								<a href="">Locations</a>
+								<br>
+								<a href="">Pricing</a>
+								<br>
+								<a href="">FAQ</a>
+								<br>
+								<a href="">Contact</a>
+								<br class="mobile-only">
+								<br class="mobile-only">
+							</div>
+							<div class="col-md-5 col-md-offset-1 col-sm-6 col-xs-6">
+								<span class="title-footer">Connect</span>
+								<hr class="under">
+								<a href="">Facebook</a>
+								<br>
+								<a href="">Twitter</a>
+								<br>
+								<a href="">Yelp</a>
+								<br>
+								<a href="">Events</a>
+								<br>
+								<a href="">Blog</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-12 col-xs-12">
+						<span class="title-footer">Subscribe</span>
+						<hr class="under">
+						<p>Stay informed with the latest products, updates and notices from ThisGreatApp!</p>
+						<form class="form-inline form-footer" name="form">
+							<div class="input-group">
+								<input class="form-control" type="email" placeholder="Enter email" required="">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="submit" disabled="disabled">Submit</button>
+								</span>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<br>
+			<hr>
+			<br>
+			<div class="container">
+				<div class="last-left">
+					<div class="address-info">
+						<span>99 Irving Plaza, 95th floor, New York, NY 10003</span>
+					</div>
+					<span class="phone-info">(212) 555-5555</span>
+				</div>
+			</div>
+			<div class="container">
+				<div class="last-left bottom-row">
+					<a class="legal-link" href="">© 2016 ThisGreatApp!, Inc.</a>
+					<a class="legal-link" href="">Privacy</a>
+					<a class="legal-link" href="">Terms</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+<script src="/javascripts/jQuery.min.v2.2.4.js">
+</script>
+<script src="/javascripts/jquery.validate.min.js">
+</script>
+<script src="/bootstrap/js/bootstrap.min.js">
+</script>
+<script src="/bootstrap/js/bootstrap-select.js">
+</script>
+<script src="/javascripts/formValidation.js">
+</script>
+<script src="/javascripts/commentsView.js">
+</script>
+</body>
+</html>

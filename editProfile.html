@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="data:image/x-icon;" type="image/x-icon" rel="shortcut icon">
+		<intercept-url pattern="/favicon.ico" access="ROLE_ANONYMOUS">
+		</intercept-url>
+		<link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="public/bootstrap/css/bootstrap-select.min.css" rel="stylesheet">
+		<link href="public/stylesheets/style.css" rel="stylesheet">
+		<title>Edit your profile</title>
+	</head>
+	<body>
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="navbar-header">
+				<button type="button" data-toggle="collapse" data-target="#navbar-main" class="navbar-toggle">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="/" class="navbar-brand">ThisGreatApp!</a>
+			</div>
+			<div id="navbar-main" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/userprofile/57dd9efe8a615d78029b45ed">Hello, electricConMan123</a></li>
+					<li><a href="/logout">Log Out</a></li>
+					<li><a href="/about">About</a></li>
+					<li><a href="/contact">Contact</a></li>
+					<li><a href="/team">Team</a></li>
+					<li><a href="/membersonly">Members Only!</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="container">
+
+		<div class="row page-header">
+			<div class="col-sm-12 col-md-8">
+				<h2>User Profilez</h2>
+			</div>
+		</div>
+
+		<div class="row">
+		
+			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+				<div class="text-center">
+					<img src="public/images/someUser.png">
+				</div>
+			</div>
+		
+			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+
+				<div class="row">
+					<div style="height:25px"></div>
+				</div>
+
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="pull-right text-muted alertEditUser">
+							<small><i>Last login: October 06, 2016</i></small>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div style="height:25px"></div>
+				</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+       		<ul class="nav nav-tabs">
+       		  <li class="active"><a onClick="toggleEditBtn(false,'personalInfo',true); return false;" href="#home" data-toggle="tab"><h4>Personal info</h4></a></li>
+       		  <li><a onClick="toggleEditBtn(false,'accountInfo',true); return false;" href="#profile" data-toggle="tab"><h4>Account info</h4></a></li>
+       		</ul>
+
+
+
+        				<div class="tab-content">
+
+
+        				    <div class="tab-pane active" id="home">
+        				    	<div style="height:16px"></div>
+
+        				    	<div>
+        				    		<div><h4><i>First Name:</i></h4></div>
+        				    		<div style="width:100%; display:table">
+    									<div class="editUserItem" style="display:table-cell; width:80%">Thomas</div>
+    									<div id="editProfileBtn" class="personalInfo" style="display:none;">&nbsp;<button class="btn btn-primary btn-md">Edit</button></div>
+									</div>
+        				    	</div>
+
+        				    	<div style="height:12px"></div>
+
+        				    	<div>
+        				    		<div><h4><i>Last Name:</i></h4></div>
+        				    		<div style="width:100%; display:table">
+    									<div class="editUserItem" style="display:table-cell; width:80%">Edison</div>
+    									<div id="editProfileBtn" class="personalInfo" style="display:none;">&nbsp;<button class="btn btn-primary btn-md">Edit</button></div>
+									</div>
+        				    	</div>
+
+        				    	<div style="height:12px"></div>
+
+        				    	<div>
+        				    		<div><h4><i>City:</i></h4></div>
+        				    		<div style="width:100%; display:table">
+    									<div class="editUserItem" style="display:table-cell; width:80%">Philadelphia</div>
+    									<div id="editProfileBtn" class="personalInfo" style="display:none;">&nbsp;<button class="btn btn-primary btn-md">Edit</button></div>
+									</div>
+        				    	</div>
+
+        				    	<div style="height:12px"></div>
+
+        				    	<div>
+        				    		<div><h4><i>State:</i></h4></div>
+        				    		<div style="width:100%; display:table">
+    									<div class="editUserItem" style="display:table-cell; width:80%">PA</div>
+    									<div id="editProfileBtn" class="personalInfo" style="display:none;">&nbsp;<button class="btn btn-primary btn-md">Edit</button></div>
+									</div>
+        				    	</div>
+
+        				    	<div style="height:28px"></div>
+        						<div>
+        							<button id="updatePersonalBtn" class="btn btn-success btn-md nav-toggle" onClick="toggleEditBtn(false,'personalInfo',false);">Update Personal info</button>
+        						</div>
+        				    </div>
+        				    <div class="tab-pane" id="profile">
+        				        <div style="height:16px"></div>
+
+        				    	<div>
+        				    		<div><h4><i>Username:</i></h4></div>
+        				    		<div style="width:100%; display:table">
+    									<div class="editUserItem" style="display:table-cell; width:80%">electricConMan123</div>
+    									<div style="display:table-row;"><small class="text-muted">&nbsp;&nbsp;&nbsp;<i>*Username cannot be changed</i></small></div>
+									</div>
+        				    	</div>
+
+        				    	<div style="height:12px"></div>
+
+        				    	<div>
+        				    		<div><h4><i>Email:</i></h4></div>
+        				    		<div style="width:100%; display:table">
+    									<div class="editUserItem" style="display:table-cell; width:80%">thomas.edison@foobersisp.com</div>
+    									<div id="editProfileBtn" class="accountInfo" style="display:none;">&nbsp;<button class="btn btn-primary btn-md">Edit</button></div>
+									</div>
+        				    	</div>
+
+        				    	<div style="height:12px"></div>
+
+        				    	<div>
+        				    		<div><h4><i>Password:</i></h4></div>
+        				    		<div style="width:100%; display:table">
+    									<div class="editUserItem" style="display:table-cell; width:80%">********</div>
+    									<div id="editProfileBtn" class="accountInfo" style="display:none;">&nbsp;<button class="btn btn-primary btn-md">Edit</button></div>
+									</div>
+        				    	</div>
+								
+        						<div style="height:28px"></div>
+        						<div>
+        							<button id="updateAccountBtn" class="btn btn-success btn-md nav-toggle" onClick="toggleEditBtn(false,'accountInfo',false);">Update Account info</button>
+        						</div>
+        				    </div>
+
+
+
+        				</div>
+
+
+
+
+        			</div>
+        		</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<footer>
+	<div class="container">
+	<div style="height:40px">
+	</div>
+	<p class="text-muted">
+	<small>&copy; Alex Smith 2016</small>
+	</p>
+	</div>
+	</footer>
+<script src="public/javascripts/jQuery.min.v2.2.4.js"></script>
+<script src="public/javascripts/jquery.validate.min.js"></script>
+<script src="public/bootstrap/js/bootstrap.min.js"></script>
+<script src="public/bootstrap/js/bootstrap-select.js"></script>
+<script src="public/javascripts/formValidation.js"></script>
+<script src="public/javascripts/editProfile.js"></script>
+<!--script(src='/javascripts/onbeforeunload.js')-->
+</body>
+</html>

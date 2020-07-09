@@ -1,0 +1,18 @@
+extends layout
+
+block bodyScripts
+  script(src='/javascripts/onbeforeunload.js')
+
+block content
+  .row.page-header
+    .col-sm-12.col-md-6
+      h2= pageHeader.header
+      
+  .row
+    .col-xs-12.col-sm-8
+      .error "?????"
+
+      - var error = "true"
+
+      - if (error == "true")
+        .alert.alert-danger(role="alert")= message

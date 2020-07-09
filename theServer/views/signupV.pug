@@ -1,0 +1,62 @@
+extends layout
+
+block bodyScripts
+  <!--script(src='/javascripts/onbeforeunload.js')-->
+
+block content
+  .row.page-header
+    .col-sm-12.col-md-8
+      h2= pageHeader.header 
+      p #{csrfToken}
+      
+  .row
+    .col-xs-12.col-sm-8
+
+      form(role="form", id="signUpFormID", action="/signup", method="post")
+
+        - if (error != undefined)
+          .alert.alert-danger(role="alert") #{error}
+
+        .form-group
+          div
+            input(type="hidden" name="_csrf" value="#{csrfToken}")
+
+        .form-group
+          label.control-label(for="email") Email Address
+          div
+            input(class="form-control", id="email", name="email", placeholder="Email", maxlength="30", type="email", required, autofocus)
+
+        .form-group
+          label.control-label(for="displayname") Username
+          div
+            input(class="form-control", id="displayname", name="displayname", placeholder="Username", maxlength="15", type="text", required)
+
+        .form-group
+          label.control-label(for="password") Password
+          div
+            input(class="form-control", id="password", name="password", placeholder="Password", maxlength="20", type="password", required)
+
+        .form-group
+          label.control-label(for="firstName") First Name
+          div
+            input.form-control(id="firstName", name="firstname", placeholder="first name", maxlength="15", type="text", required)
+
+        .form-group
+          label.control-label(for="lastName") Last Name
+          div
+            input.form-control(id="lastName", name="lastname", placeholder="last name", maxlength="15", type="text", required)
+
+        .form-group
+          label.control-label(for="city") City
+          div
+            input.form-control(id="city", name="city", placeholder="city", maxlength="15", type="text", required)
+
+        .form-group
+          label.control-label(for="state") State
+          div
+            +selectStateFormControl()
+        .col-xs-12(style="height:15px;")
+
+        .form-group
+          div
+            input.form-control(type="submit", value="Submit", class="btn btn-primary btn-block")

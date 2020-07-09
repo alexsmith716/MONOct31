@@ -1,0 +1,141 @@
+extends layout
+
+block headScripts
+
+block bodyScripts
+  script(src="/javascripts/commentsView.js")
+
+block content
+
+
+
+  form(role="form", id="addMainCommentForm", method="POST", enctype="application/x-www-form-urlencoded")
+    .modal.fade(id="addMainCommentFormModal", tabindex="-1")
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h4.modal-title Add your Comment
+          .modal-body
+
+            p= `${csrfToken}`
+
+            - if (error != undefined)
+              .alert.alert-danger(role="alert") #{error}
+
+            .form-group
+              div
+                input(type="hidden" name="_csrf" value=`${csrfToken}`)
+
+            .form-group
+              label.control-label(for="candidate") Which candidate do you support?
+                
+              <div class="radio">
+                <label><input type="radio", class="radio", name="candidate", id="candidate1", value="Donald Trump">I support Donald Trump</label>
+              </div>
+
+              <div class="radio">
+                <label><input type="radio", class="radio", name="candidate", id="candidate2", value="Hillary Clinton">I support Hillary Clinton</label>
+              </div>
+              
+              <div class="radio">
+                <label><input type="radio", class="radio", name="candidate", id="candidate3", value="neither candidate">I support neither candidate</label>
+              </div>
+  
+            .form-group
+              label.control-label(for="comment") Comment about the candidate
+              div
+                textarea.form-control.input-lg(id="comment", name="comment", placeholder="your comments", rows="10")
+
+            .form-group
+              button(class="btn btn-default btn-lg" data-dismiss="modal") Cancel
+              | &nbsp;&nbsp;&nbsp;&nbsp;
+              button(class="btn btn-primary btn-lg" type="submit") Submit
+
+
+
+
+    form(role="form", id="addSubCommentForm", method="POST", enctype="application/x-www-form-urlencoded")
+    .modal.fade(id="addSubCommentFormModal", tabindex="-1")
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h4.modal-title Reply to this comment
+          .modal-body
+
+            p= `${csrfToken}`
+
+            - if (error != undefined)
+              .alert.alert-danger(role="alert") #{error}
+
+            .form-group
+              div
+                input(type="hidden" name="_csrf" value=`${csrfToken}`)
+
+            .form-group
+              label.control-label(for="comment") Reply
+              div
+                textarea.form-control.input-lg(id="comment", name="comment", placeholder="your reply", rows="10")
+
+            .form-group
+              button(class="btn btn-default btn-lg" data-dismiss="modal") Cancel
+              | &nbsp;&nbsp;&nbsp;&nbsp;
+              button(class="btn btn-primary btn-lg" type="submit") Submit
+
+
+  .login
+    br
+    br
+
+    .container
+      .row
+
+        .col-xs-12
+          .error= message
+
+          div
+            button(type="button", class="btn btn-default btn-lg")
+              span(class="glyphicon glyphicon-menu-left") 
+              | Back
+            | &nbsp;&nbsp;
+            button(type="button", class="btn btn-default btn-lg")
+              span(class="glyphicon glyphicon-menu-right")
+              | Next
+
+          div(style="height:20px;")
+
+          div
+            a.btn.btn-primary.btn-lg(href="") Sort Comments
+            | &nbsp;&nbsp;
+            button(type="button", class="btn btn-primary btn-lg", onclick="doCommentModal()") Add a Comment
+
+
+          div(style="height:20px;")
+
+          .row.list-group
+
+            - var handle = currentUser
+            - var key
+            - var value
+            - var doc
+            - var doc2
+
+            - for(doc in responseBody)
+              - var doo= responseBody[doc]
+                - for(doc2 in doo)
+                  
+                  p= "KEY1: " + doc2
+                  p= "VALUE1: " + doo[doc2]
+
+
+              button(type="button", class="btn btn-primary btn-md", onclick="doSubCommentModal()") Reply
+
+              br
+              br
+              hr
+
+
+
+
+
+
+

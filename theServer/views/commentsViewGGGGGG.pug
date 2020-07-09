@@ -1,0 +1,121 @@
+extends layout
+
+block headScripts
+
+block bodyScripts
+  script(src="/javascripts/commentsView.js")
+
+block content
+
+  form(role="form", id="addMainCommentForm", method="POST", enctype="application/x-www-form-urlencoded")
+
+    .modal.fade(id="addMainCommentFormModal", tabindex="-1")
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h4.modal-title Add your Comment
+          .modal-body
+
+            p= `${csrfToken}`
+
+            - if (error != undefined)
+              .alert.alert-danger(role="alert") #{error}
+
+            .form-group
+              div
+                input(type="hidden" name="_csrf" value=`${csrfToken}`)
+
+            .form-group
+              label.control-label(for="candidate") Which candidate do you support?
+                
+              <div class="radio">
+                <label><input type="radio", class="radio", name="candidate", id="candidate1", value="Donald Trump">I support Donald Trump</label>
+              </div>
+
+              <div class="radio">
+                <label><input type="radio", class="radio", name="candidate", id="candidate2", value="Hillary Clinton">I support Hillary Clinton</label>
+              </div>
+              
+              <div class="radio">
+                <label><input type="radio", class="radio", name="candidate", id="candidate3", value="neither candidate">I support neither candidate</label>
+              </div>
+  
+            .form-group
+              label.control-label(for="comment") Comment about the candidate
+              div
+                textarea.form-control.input-lg(id="comment", name="comment", placeholder="your comments", rows="10")
+
+            .form-group
+              button(class="btn btn-default btn-lg" data-dismiss="modal") Cancel
+              | &nbsp;&nbsp;&nbsp;&nbsp;
+              button(class="btn btn-primary btn-lg" type="submit") Submit
+
+  .login
+    br
+    br
+
+    .container
+      .row
+
+        .col-xs-12
+          .error= message
+
+          div
+            button(type="button", class="btn btn-default btn-lg")
+              span(class="glyphicon glyphicon-menu-left") 
+              | Back
+            | &nbsp;&nbsp;
+            button(type="button", class="btn btn-default btn-lg")
+              span(class="glyphicon glyphicon-menu-right")
+              | Next
+
+          div(style="height:20px;")
+
+          div
+            a.btn.btn-primary.btn-lg(href="") Sort Comments
+            | &nbsp;&nbsp;
+            button(type="button", class="btn btn-primary btn-lg", onclick="doIndexViewAddCommentModal()") Add a Comment
+
+
+          div(style="height:20px;")
+
+          .row.list-group
+
+            - var handle = currentUser
+            - var key
+            - var value
+            - var doc
+
+
+            each doc in responseBody
+
+              - var id= doc.id
+              - var displayname= doc.displayname
+              - var city= doc.city
+              - var state= doc.state
+              - var cityState= ", " + city + ", " + state
+              - var candidate= doc.candidate
+              - var comment= doc.comment
+              - var recommended= doc.recommended
+
+              <!--p= "KEY: " + doc-->
+              <!--p= "VALUE: " + responseBody[doc]-->
+
+            
+              <!--p(class="controlOverflow")= displayname-->
+              <!--p(class="controlOverflow")= cityState-->
+              <!--p(class="controlOverflow")= candidate-->
+              <!--p(class="controlOverflow")= comment-->
+              <!--p(class="controlOverflow")= recommended-->
+
+              br
+              br
+              br
+              hr
+
+
+
+
+
+
+

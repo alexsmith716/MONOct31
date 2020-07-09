@@ -1,0 +1,74 @@
+extends layout
+
+block headScripts
+
+block bodyScripts
+
+block content
+
+  .login
+    br
+    br
+
+    .container
+      .row
+        .col-md-10.col-md-offset-1
+          .center-form
+            .panel-body
+              h1.form-title= pageHeader.header
+
+
+              form(role="form", id="signUpFormID", action="/signup", method="post")
+
+                - if (error != undefined)
+                  .alert.alert-danger(role="alert") #{error}
+
+                .form-group
+                  div
+                    input(type="hidden" name="_csrf" value=`${csrfToken}`)
+
+                .form-group
+                  label.control-label.sr-only(for="firstName") First Name
+                  div
+                    input.form-control.input-md(id="firstName", name="firstname", maxlength="21", tabindex="1", placeholder="First Name", type="text", required title="Type your First Name")
+
+                .form-group
+                  label.control-label.sr-only(for="lastName") Last Name
+                  div
+                    input.form-control.input-md(id="lastName", name="lastname", maxlength="31", tabindex="2", placeholder="Last Name", type="text", required title="Type your Last Name")
+
+                .form-group
+                  label.control-label.sr-only(for="displayname") Username
+                  div
+                    input.form-control(id="displayname", name="displayname", tabindex="3", placeholder="Username", type="text", required, title="Type your Username. Username cannot be changed")
+                    .text-muted.small
+                      | &nbsp;&nbsp;&nbsp;
+                      i *cannot be changed after sign-up
+
+                .form-group
+                  label.control-label.sr-only(for="email") Email Address
+                  div
+                    input.form-control.input-md(id="email", name="email", tabindex="4", placeholder="Email address", type="email", title="Type your First Name", required)
+
+                .form-group
+                  label.control-label.sr-only(for="password") Password
+                  div
+                    input.form-control.input-md(id="password", name="password", tabindex="5", placeholder="Password", type="password", required)
+
+
+
+                .form-group
+                  label.control-label.sr-only(for="city") City
+                  div
+                    input.form-control.input-md(id="city", name="city", tabindex="6", placeholder="City", type="text", required)
+
+                .form-group
+                  label.control-label.sr-only(for="State") State
+                  div
+                    +selectStateFormControl()
+                .col-xs-12(style="height:15px;")
+
+                div
+                  button(type="submit", class="btn btn-primary btn-md") Submit
+    br
+    br

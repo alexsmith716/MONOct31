@@ -1,0 +1,231 @@
+extends layout
+
+block headScripts
+
+block bodyScripts
+  script(src="/javascripts/commentsView.js")
+
+block content
+
+  form(action="/comments/maincomment", id="addMainCommentForm", method="POST", enctype="application/x-www-form-urlencoded")
+    .modal.fade(id="addMainCommentFormModal", tabindex="-1")
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h4.modal-title Add your Comment
+          .modal-body
+
+            p= `${csrfToken}`
+
+            - if (error != undefined)
+              .alert.alert-danger(role="alert") #{error}
+
+            .form-group
+              div
+                input(type="hidden" name="_csrf" value=`${csrfToken}`)
+
+            .form-group
+              label.control-label(for="candidate") Which candidate do you support?
+                
+              <div class="radio">
+                <label><input type="radio", class="radio", name="candidate", id="candidate1", value="Donald Trump">I support Donald Trump</label>
+              </div>
+
+              <div class="radio">
+                <label><input type="radio", class="radio", name="candidate", id="candidate2", value="Hillary Clinton">I support Hillary Clinton</label>
+              </div>
+              
+              <div class="radio">
+                <label><input type="radio", class="radio", name="candidate", id="candidate3", value="neither candidate">I support neither candidate</label>
+              </div>
+  
+            .form-group
+              label.control-label(for="comment") Comment about the candidate
+              div
+                textarea.form-control.input-lg(id="comment", name="comment", placeholder="your comments", rows="10")
+
+            .form-group
+              button(class="btn btn-default btn-lg" data-dismiss="modal") Cancel
+              | &nbsp;&nbsp;&nbsp;&nbsp;
+              button(class="btn btn-primary btn-lg" type="submit") Submit
+
+
+  form(id="addSubCommentForm", action="", method="POST", enctype="application/x-www-form-urlencoded")
+    .modal.fade(id="addSubCommentFormModal", tabindex="-1")
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h4.modal-title Reply to this comment
+          .modal-body
+
+            p= `${csrfToken}`
+
+            - if (error != undefined)
+              .alert.alert-danger(role="alert") #{error}
+
+            .form-group
+              div
+                input(type="hidden" name="_csrf" value=`${csrfToken}`)
+
+            .form-group
+              label.control-label(for="comment") Reply
+              div
+                textarea.form-control.input-lg(id="comment", name="comment", placeholder="your reply", rows="10")
+
+            .form-group
+              button(class="btn btn-default btn-lg" data-dismiss="modal") Cancel
+              | &nbsp;&nbsp;&nbsp;&nbsp;
+              button(class="btn btn-primary btn-lg" type="submit") Submit
+
+
+  .login
+    br
+    br
+    br
+    br
+
+    .container
+
+      .row
+        .col-xs-12
+          button(type="button", class="btn btn-default btn-lg")
+            span(class="glyphicon glyphicon-menu-left") 
+            | Back
+          | &nbsp;&nbsp;
+          button(type="button", class="btn btn-default btn-lg")
+            span(class="glyphicon glyphicon-menu-right")
+            | Next
+
+          div(style="height:25px;")
+
+          a.btn.btn-primary.btn-lg(href="") Sort Comments
+          | &nbsp;&nbsp;
+          button(type="button", class="btn btn-primary btn-lg", onclick="doCommentModal()") Add a Comment
+
+          div(style="height:25px;")
+
+
+      .row
+        .col-xs-12.col-sm-8
+
+          .row.list-group
+
+            - var doc
+            - var subDoc
+
+            for doc in responseBody
+
+              - var id= doc.id
+              - var displayname= doc.displayname
+              - var commenterId= doc.commenterId
+              - var city= doc.city
+              - var state= doc.state
+              - var address= city + ", " + state
+              - var datecreated= doc.datecreated
+              - var candidate= doc.candidate
+              - var comment= doc.comment
+              - var subComments= doc.subComments
+
+              .col-xs-12.list-group-item
+
+                h4= displayname
+                  |&nbsp;&nbsp;&nbsp;
+                  small= address
+                  |&nbsp;&nbsp;
+                  small
+                    +newAppDate(datecreated,false)
+
+                .panel.panel-primary
+                  .panel-heading
+                    i Which candidate do I support? ...
+
+                  .panel-body
+                    .row
+                      .col-xs-12
+
+                        p(class="controlOverflow")= "commenterId: " + commenterId
+                        p(class="controlOverflow")= "candidate: " + candidate
+                        p(class="controlOverflow")= "comment: " + comment
+
+                  if subComments.length > 0
+                    .row
+                      .col-xs-10.col-xs-offset-2
+                        hr
+                        br
+
+                        for subDoc in subComments
+
+                          - var displayname2= subDoc.displayname
+                          - var commenterId2= subDoc.commenterId
+                          - var city2= subDoc.city
+                          - var state2= subDoc.state
+                          - var address2= city + ", " + state
+                          - var datecreated2= subDoc.datecreated
+                          - var comment2= subDoc.comment
+
+
+                          
+                          header
+                            h4= displayname2
+                              | &nbsp;&nbsp;
+                              small= address2
+                              | &nbsp;&nbsp;
+                              small
+                                +newAppDate(datecreated2,false)
+
+
+                          
+                          p= comment2
+
+
+
+
+                          footer
+                            .flex-containerMainCentered.flex-containerMainCentered2
+                              a(class="btn" href="/reply") Reply
+                              span
+                                .spacerDot
+                              .btn.btnText 41
+                              .recommendedGlyph.btn.btnText
+                                span.glyphicon.glyphicon-thumbs-up
+                              a(class="btn" href="/recommend") Recommend
+
+                          br
+                          hr
+
+
+                .pull-right
+                  button(type="button", class="subCommentReply btn btn-primary btn-lg", data-id=`${doc.id}`) Reply
+                  | &nbsp;&nbsp;
+                  a.btn.btn-primary.btn-lg(href='/#{id}') View all comments
+                    | &nbsp;
+                    span(class="badge") 11
+
+
+
+        .col-xs-12.col-sm-4
+          .row
+            p.lead= sideBlurb
+
+    //
+      .row
+
+        - var handle = currentUser
+        - var key
+        - var value
+        - var doc
+        - var doc2
+
+        - for(doc in responseBody)
+          - var doo= responseBody[doc]
+            - for(doc2 in doo)
+              
+              p= "KEY1: " + doc2
+              p= "VALUE1: " + doo[doc2]
+
+
+
+
+
+
+

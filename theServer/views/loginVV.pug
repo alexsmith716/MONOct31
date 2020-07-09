@@ -1,0 +1,161 @@
+extends layout
+
+block headScripts
+
+block bodyScripts
+
+block content
+
+
+  form(role="form", id="forgotPasswordForm", method="post")
+    .modal.fade(id='forgotPasswordFormModal' tabindex='-1')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button(type="button" class="close" data-dismiss="modal") &times;
+            h4.modal-title Forgot Password
+          .modal-body
+
+              - if (error != undefined)
+                .alert.alert-danger(role="alert") #{error}
+
+              .form-group
+                div
+                  input(type="hidden" name="_csrf" value=`${csrfToken}`)
+
+              .form-group
+                label.control-label(for="password") Enter in the email address you signed up with and we will send you a temporary password:
+                div
+                  input.form-control.input-lg(id="email", name="email", placeholder="Email Address", maxlength="30", type="email", required)           
+      
+              .col-xs-12(style="height:15px;")
+      
+              .form-group
+                button(class="btn btn-default btn-lg" data-dismiss="modal") Cancel
+                | &nbsp;&nbsp;&nbsp;&nbsp;
+                button(class="btn btn-primary btn-lg" type="submit") Submit
+
+  .login
+    br
+    br
+
+    .container
+      .row
+        .col-md-6.col-md-offset-1
+          .center-form
+            .panel-body
+              h1.form-title= pageHeader.header
+              <!-- p #{csrfToken} -->
+
+
+              form(role="form", id="loginFormID", action="/login", method="post")
+
+                - if (error != undefined)
+                  .alert.alert-danger(role="alert") #{error}
+
+                .form-group
+                  div
+                    input(type="hidden" name="_csrf" value=`${csrfToken}`)
+
+                .form-group
+                  label.control-label.sr-only(for="email") Email Address
+                  div
+                    input.form-control.input-lg(id="email", name="email", placeholder="Email Address", maxlength="40", type="email", required, autofocus)
+
+                .form-group
+                  label.control-label.sr-only(for="password") Password
+                  div
+                    input.form-control.input-lg(id="password", name="password", placeholder="Password", maxlength="30", type="password", required)
+
+                div
+                  button(type="submit", class="btn btn-primary btn-lg") Log In
+
+
+              div(style='height:30px')
+              
+              div
+                i
+                  a(href="" data-toggle="modal" data-target="#forgotPasswordFormModal") Forgot your Password?
+    br
+    br
+
+  footer
+    .footer
+      br
+      .container
+        .row
+          .col-md-2.col-sm-12.col-xs-12
+            .row
+              .col-md-12.col-sm-6.col-xs-6
+                a(href="" target="_blank")
+                  img(src="/images/ios.svg" width="125" height="54" alt="Get it for iOS" class="apple")
+
+              .col-md-12.col-sm-6.col-xs-6
+                a(href="" target="_blank")
+                  img(src="/images/android.svg" width="125" height="54" alt="Get it for Android" class="android")
+
+          .col-md-6.col-sm-12.col-xs-12
+            .row
+              .col-md-5.col-md-offset-1.col-sm-6.col-xs-6
+                span.title-footer Company
+
+                hr.under
+
+                a(href="") About
+                br
+
+                a(href="") Locations
+                br
+
+                a(href="") Pricing
+                br
+
+                a(href="") FAQ
+                br
+
+                a(href="") Contact
+
+                br.mobile-only
+
+                br.mobile-only
+
+
+              .col-md-5.col-md-offset-1.col-sm-6.col-xs-6
+                span.title-footer Connect
+
+                hr.under
+
+                a(href="") Facebook
+                br
+
+                a(href="") Twitter
+                br
+
+                a(href="") Yelp
+                br
+
+                a(href="") Events
+                br
+
+                a(href="") Blog
+
+          .col-md-4.col-sm-12.col-xs-12
+
+      br
+      hr
+      br
+
+      .container
+        .last-left
+          .address-info
+            span 43 W 23rd St, 2nd floor, New York, NY 10010
+
+          span.phone-info (646) 883-8481
+
+      .container
+        .last-left.bottom-row
+          a(class="legal-link" href="") © 2016 ThisGreatApp!, Inc.
+          a(class="legal-link" href="") Privacy
+          a(class="legal-link" href="") Terms
+
+

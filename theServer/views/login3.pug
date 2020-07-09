@@ -1,0 +1,36 @@
+extends layout
+
+block bodyScripts
+  <!--script(src='/javascripts/onbeforeunload.js')-->
+
+block content
+  .row.page-header
+    .col-sm-12.col-md-8
+      h2= pageHeader.header
+      
+  .row
+    .col-xs-12.col-sm-8
+      .error= message
+
+      form(role="form", id="loginFormID", action="/login", method="post")
+
+        - if (error == "400")
+          .alert.alert-danger(role="alert") All fields are required, please try again
+        - if (error == "404")
+          .alert.alert-danger(role="alert") Login failed. Confirm email and password and try again.
+        - if (error == "401")
+          .alert.alert-danger(role="alert") Please login or sign up.
+
+        .form-group
+          label.control-label(for="email") Email Address
+          div
+            input(class="form-control", id="email", name="email", placeholder="Email", maxlength="20", type="email", autofocus)
+
+        .form-group
+          label.control-label(for="password") Password
+          div
+            input(class="form-control", id="password", name="password", placeholder="Password", maxlength="20", type="password")
+
+        .form-group
+          div
+            input.form-control(type="submit", value="Submit", class="btn btn-primary btn-block")

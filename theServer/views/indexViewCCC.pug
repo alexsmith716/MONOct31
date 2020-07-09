@@ -1,0 +1,81 @@
+extends layout
+
+include mixins/mixins
+
+block content
+
+  .row.page-header
+    .col-xs-12
+      h1= pageHeader.title
+
+  .row
+    .col-xs-12.col-sm-8
+      .error= message
+
+      if currentUser != undefined
+        div
+          a.btn.btn-primary.btn-lg(href='/comments') Sort Comments
+          .pull-right
+            button(type="button", class="btn btn-default btn-lg")
+              span(class="glyphicon glyphicon-menu-left") 
+              | Back
+            | &nbsp;&nbsp;
+            button(type="button", class="btn btn-default btn-lg")
+              span(class="glyphicon glyphicon-menu-right")
+              | Next
+
+      else
+        div
+          h3= subtitle
+
+        div(style="height:40px;")
+        
+        a.btn.btn-success.btn-lg(href='/login') Log In
+        | &nbsp;&nbsp;&nbsp;
+        a.btn.btn-success.btn-lg(href='/signup') Sign Up
+
+      div(style="height:20px;")
+
+      .row.list-group
+
+        - var handle = currentUser
+
+        each doc in responseBody
+        
+          - var id= doc.id
+          - var displayname= doc.displayname
+          - var datecreated= doc.datecreated
+          - var city= doc.city
+          - var state= doc.state
+          - var address= ", " + city + ", " + state
+
+          .col-xs-12.list-group-item
+
+            h4= displayname
+              small= address
+                br
+                small
+                  +newAppDate(datecreated,false)
+
+            .panel.panel-primary
+              .panel-heading
+                i Which candidate do I support? ...
+
+              .panel-body
+                .row
+                  .col-xs-12
+
+                    p(class="controlOverflow")= displayname
+                    p(class="controlOverflow")= datecreated
+
+            .pull-right
+              a.btn.btn-primary.btn-lg(href='/#{id}') View all comments
+                | &nbsp;
+                span(class="badge") 11
+
+            div(style="height:40px")
+
+      div(style="height:10px")
+
+    .col-xs-12.col-sm-4
+      p.lead= sideBlurb
